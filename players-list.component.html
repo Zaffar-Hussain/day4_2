@@ -1,0 +1,25 @@
+<p>players-list works!</p>
+<table border="2px black">
+    <thead>
+        <tr>
+            <th colspan="5">Player Details</th>
+        </tr>
+        <tr>
+            <th>ID</th><th>Name</th><th>Gender</th><th>Salary</th><th>DOB</th>
+        </tr>
+    </thead>
+    <tbody *ngFor='let player of players;trackBy:trackById;let isEven=even; let index=index;'>
+        <tr [ngClass]="{'rowColor': isEven == true}">
+            <td>{{player.id}}</td>
+            <td>{{player.name}}</td>
+            <td>{{player.gender}}</td>
+            <td>{{player.salary}}</td>
+            <td>{{player.birthday}}</td>
+        </tr>
+        <tr *ngIf='!players || players.length==0'>
+            <td colspan="5">No players to display</td>
+        </tr>
+    </tbody>
+    <button (click)='getPlayers()'>REFRESH</button>
+</table>
+<!-- [class.rowColor]="{'myStyle': isEven}" -->
